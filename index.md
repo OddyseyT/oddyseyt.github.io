@@ -534,16 +534,13 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 										</article>
 
 									<!-- Mini Post -->
-									<!--
-										<article class="mini-post">
+																			<article class="mini-post">
 											<header>
-												<h3><a href="single.html">Rutrum neque accumsan</a></h3>
-												<time class="published" datetime="2015-10-19">October 19, 2015</time>
-												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+												<h3><a href="https://www.amazon.com/Ms.-Theresa-M.-Lennon/e/B00AY0KMPY">My Author Page</a></h3>
+												<time class="published" datetime="2015-10-19">February 2, 2020</time>
+												<a href="#" class="author"><img src="images/_1284280131_554.jpg.jpg" alt="" /></a>
 											</header>
-											<a href="single.html" class="image"><img src="images/pic05.jpg" alt="" /></a>
-										</article>
-									-->
+											<a href="https://www.amazon.com/Ms.-Theresa-M.-Lennon/e/B00AY0KMPY" class="image"><img src="images/meandbooks.jpg" alt="" /></a>
 									<!-- Mini Post -->
 									<!-- 
 										<article class="mini-post">
