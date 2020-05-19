@@ -1,95 +1,94 @@
-/*
-	Future Imperfect by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 (function($) {
+  
+  "use strict";  
 
-	var	$window = $(window),
-		$body = $('body'),
-		$menu = $('#menu'),
-		$sidebar = $('#sidebar'),
-		$main = $('#main');
+  $(window).on('load', function() {
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ null,      '480px'  ]
-		});
+    /* 
+   MixitUp
+   ========================================================================== */
+  $('#portfolio').mixItUp();
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+  /* 
+   One Page Navigation & wow js
+   ========================================================================== */
+    var OnePNav = $('.onepage-nev');
+    var top_offset = OnePNav.height() - -0;
+    OnePNav.onePageNav({
+      currentClass: 'active',
+      scrollOffset: top_offset,
+    });
+  
+  /*Page Loader active
+    ========================================================*/
+    $('#preloader').fadeOut();
 
-	// Menu.
-		$menu
-			.appendTo($body)
-			.panel({
-				delay: 500,
-				hideOnClick: true,
-				hideOnSwipe: true,
-				resetScroll: true,
-				resetForms: true,
-				side: 'right',
-				target: $body,
-				visibleClass: 'is-menu-visible'
-			});
+  // Sticky Nav
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() > 200) {
+            $('.scrolling-navbar').addClass('top-nav-collapse');
+        } else {
+            $('.scrolling-navbar').removeClass('top-nav-collapse');
+        }
+    });
 
-	// Search (header).
-		var $search = $('#search'),
-			$search_input = $search.find('input');
+    /* slicknav mobile menu active  */
+    $('.mobile-menu').slicknav({
+        prependTo: '.navbar-header',
+        parentTag: 'liner',
+        allowParentLinks: true,
+        duplicate: true,
+        label: '',
+        closedSymbol: '<i class="icon-arrow-right"></i>',
+        openedSymbol: '<i class="icon-arrow-down"></i>',
+      });
 
-		$body
-			.on('click', '[href="#search"]', function(event) {
+      /* WOW Scroll Spy
+    ========================================================*/
+     var wow = new WOW({
+      //disabled for mobile
+        mobile: false
+    });
 
-				event.preventDefault();
+    wow.init();
 
-				// Not visible?
-					if (!$search.hasClass('visible')) {
+    /* Nivo Lightbox 
+    ========================================================*/
+    $('.lightbox').nivoLightbox({
+        effect: 'fadeScale',
+        keyboardNav: true,
+      });
 
-						// Reset form.
-							$search[0].reset();
+    /* Counter
+    ========================================================*/
+    $('.counterUp').counterUp({
+     delay: 10,
+     time: 1000
+    });
 
-						// Show.
-							$search.addClass('visible');
 
-						// Focus input.
-							$search_input.focus();
+    /* Back Top Link active
+    ========================================================*/
+      var offset = 200;
+      var duration = 500;
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > offset) {
+          $('.back-to-top').fadeIn(400);
+        } else {
+          $('.back-to-top').fadeOut(400);
+        }
+      });
 
-					}
+      $('.back-to-top').on('click',function(event) {
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: 0
+        }, 600);
+        return false;
+      });
 
-			});
 
-		$search_input
-			.on('keydown', function(event) {
 
-				if (event.keyCode == 27)
-					$search_input.blur();
+  });      
 
-			})
-			.on('blur', function() {
-				window.setTimeout(function() {
-					$search.removeClass('visible');
-				}, 100);
-			});
-
-	// Intro.
-		var $intro = $('#intro');
-
-		// Move to main on <=large, back to sidebar on >large.
-			breakpoints.on('<=large', function() {
-				$intro.prependTo($main);
-			});
-
-			breakpoints.on('>large', function() {
-				$intro.prependTo($sidebar);
-			});
-
-})(jQuery);
+}(jQuery));
