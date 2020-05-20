@@ -1,7 +1,7 @@
 <?php
      $name = $_POST['name'];
 	 $email = $_POST['email'];
-	 $topic = $_POST['subject'];
+	 $topic = $_POST['topic'];
      $message = $_POST['message']; 
 
 
@@ -16,7 +16,7 @@ $body_message .= 'Message: '.$message;
 $headers = 'From: '.$email."\r\n";
 $headers .= 'Reply-To: '.$email."\r\n";
 
-$mail_status = mail($mail_to, $subject, $message, $headers);
+$mail_status = mail($mail_to, $subject, $body_message, $headers);
 
 if ($mail_status) { ?>
 	<script language="javascript" type="text/javascript">
